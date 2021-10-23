@@ -233,11 +233,16 @@ int main(int argc, const char * argv[]) {
             population.erase(population.begin(), population.begin()+100);
             
             vector<Equation> new_set = replenish_population(coordinates, operations, terminal, 200);
-            vector<Equation> new_set2 = replenish_population(coordinates, operations, terminal, 100);
-            vector<Equation> new_set3 = replenish_population(coordinates, operations, terminal, 50);
             population.insert(population.end(), new_set.begin(), new_set.end());
-            minor_league.insert(minor_league.end(), new_set2.begin(), new_set2.end());
-            major_league.insert(major_league.end(), new_set3.begin(), new_set3.end());
+            
+            if (minor_league.size() > 0){
+                vector<Equation> new_set2 = replenish_population(coordinates, operations, terminal, 100);
+                minor_league.insert(minor_league.end(), new_set2.begin(), new_set2.end());
+            }
+            if (major_league.size()>0){
+                vector<Equation> new_set3 = replenish_population(coordinates, operations, terminal, 50);
+                major_league.insert(major_league.end(), new_set3.begin(), new_set3.end());
+            }
             
             sort(population.begin(), population.end(), compareByError);
             sort(minor_league.begin(), minor_league.end(), compareByError);
