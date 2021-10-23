@@ -97,10 +97,10 @@ int main(int argc, const char * argv[]) {
         if (evaluations % 50 == 0){
             cout << "Status update: ";
             cout << population[0].error << endl;
-//            cout << "Updating population..." << endl;
-//            vector<Equation> new_set = get_population(coordinates, operations, terminal);
-//            population.insert(population.end(), new_set.begin(), new_set.end());
-//            sort(population.begin(), population.end(), compareByError);
+            cout << "Updating population..." << endl;
+            vector<Equation> new_set = get_population(coordinates, operations, terminal);
+            population.insert(population.end(), new_set.begin(), new_set.end());
+            sort(population.begin(), population.end(), compareByError);
             vector<string> curr_best = population[0].function;
             cout << "[";
             for(int j=0; j < curr_best.size(); j++){
