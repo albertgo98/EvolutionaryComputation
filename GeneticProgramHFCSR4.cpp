@@ -144,7 +144,7 @@ int main(int argc, const char * argv[]) {
         
         evaluations += 1;
         
-        if (evaluations % 2 == 0){
+        if (evaluations % 25 == 0){
             if (major_league.size() > 0){
                 cout << "Major League update: ";
                 cout << major_league[0].error << endl;
