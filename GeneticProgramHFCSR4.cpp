@@ -127,14 +127,20 @@ int main(int argc, const char * argv[]) {
 //        cout << minor_league.size();
 //        cout << ", ";
 //        cout << major_league.size() << endl;
-        
-        population.erase(population.begin()+200, population.end());
-        minor_league.erase(minor_league.begin()+150, minor_league.end());
-        major_league.erase(major_league.begin()+50, major_league.end());
+            cout << "Here" << endl;
         
         sort(population.begin(), population.end(), compareByError);
         sort(minor_league.begin(), minor_league.end(), compareByError);
         sort(major_league.begin(), major_league.end(), compareByError);
+            
+        population.erase(population.begin()+200, population.end());
+        
+        if (minor_league.size() > 150){
+            minor_league.erase(minor_league.begin()+150, minor_league.end());
+        }
+        if (major_league.size() > 75){
+            major_league.erase(major_league.begin()+75, major_league.end());
+        }
         
         evaluations += 1;
         
