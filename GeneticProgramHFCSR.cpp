@@ -233,8 +233,8 @@ int main(int argc, const char * argv[]) {
         cout << evaluations << endl;
     }
     
-    vector<string> best_eqn = population[0].function;
-    double min_error = population[0].error;
+    vector<string> best_eqn = major_league[0].function;
+    double min_error = major_league[0].error;
     
     cout << "[";
     for(int i=0; i < best_eqn.size(); i++){

@@ -122,11 +122,11 @@ int main(int argc, const char * argv[]) {
         population = new_population;
         minor_league = new_minor;
         major_league = new_major;
-//        cout << population.size() << endl;
-//        cout << ", ";
-//        cout << minor_league.size();
-//        cout << ", ";
-//        cout << major_league.size() << endl;
+        cout << population.size() << endl;
+        cout << ", ";
+        cout << minor_league.size();
+        cout << ", ";
+        cout << major_league.size() << endl;
         
         sort(population.begin(), population.end(), compareByError);
         sort(minor_league.begin(), minor_league.end(), compareByError);
@@ -235,8 +235,8 @@ int main(int argc, const char * argv[]) {
         cout << evaluations << endl;
     }
     
-    vector<string> best_eqn = population[0].function;
-    double min_error = population[0].error;
+    vector<string> best_eqn = major_league[0].function;
+    double min_error = major_league[0].error;
     
     cout << "[";
     for(int i=0; i < best_eqn.size(); i++){
