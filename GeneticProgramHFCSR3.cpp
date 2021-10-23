@@ -122,11 +122,11 @@ int main(int argc, const char * argv[]) {
         population = new_population;
         minor_league = new_minor;
         major_league = new_major;
-        cout << population.size() << endl;
-        cout << ", ";
-        cout << minor_league.size();
-        cout << ", ";
-        cout << major_league.size() << endl;
+//        cout << population.size() << endl;
+//        cout << ", ";
+//        cout << minor_league.size();
+//        cout << ", ";
+//        cout << major_league.size() << endl;
         
         sort(population.begin(), population.end(), compareByError);
         sort(minor_league.begin(), minor_league.end(), compareByError);
@@ -135,21 +135,6 @@ int main(int argc, const char * argv[]) {
         evaluations += 1;
         
         if (evaluations % 25 == 0){
-            update_minor = {population.begin(), population.begin()+100};
-            if (minor_league.size() > 0){
-                update_major = {minor_league.begin(), minor_league.begin()+50};
-                minor_league.erase(minor_league.begin(), minor_league.begin()+50);
-                if (minor_league.size() == 100){
-                    minor_league.erase(minor_league.begin()+50, minor_league.end());
-                }
-            }
-            minor_league.insert(minor_league.end(), update_minor.begin(), update_minor.end());
-            
-            if (major_league.size() > 0){
-                major_league.erase(major_league.begin()+25, major_league.end());
-            }
-            major_league.insert(major_league.end(), update_major.begin(), update_major.end());
-            
             if (major_league.size() > 0){
                 cout << "Major League update: ";
                 cout << major_league[0].error << endl;
@@ -219,6 +204,21 @@ int main(int argc, const char * argv[]) {
                     break;
                 }
             }
+            
+            update_minor = {population.begin(), population.begin()+100};
+            if (minor_league.size() > 0){
+                update_major = {minor_league.begin(), minor_league.begin()+50};
+                minor_league.erase(minor_league.begin(), minor_league.begin()+50);
+                if (minor_league.size() == 100){
+                    minor_league.erase(minor_league.begin()+50, minor_league.end());
+                }
+            }
+            minor_league.insert(minor_league.end(), update_minor.begin(), update_minor.end());
+            
+            if (major_league.size() > 0){
+                major_league.erase(major_league.begin()+25, major_league.end());
+            }
+            major_league.insert(major_league.end(), update_major.begin(), update_major.end());
             
             population.erase(population.begin(), population.begin()+100);
             
