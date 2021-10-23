@@ -127,7 +127,7 @@ int main(int argc, const char * argv[]) {
 //        cout << minor_league.size();
 //        cout << ", ";
 //        cout << major_league.size() << endl;
-            cout << "Here" << endl;
+//        cout << "Here" << endl;
         
         sort(population.begin(), population.end(), compareByError);
         sort(minor_league.begin(), minor_league.end(), compareByError);
