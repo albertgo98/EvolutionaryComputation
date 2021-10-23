@@ -186,7 +186,7 @@ int main(int argc, const char * argv[]) {
                 cout << population[0].error << endl;
                 cout << "Updating population..." << endl;
                 
-                vector<string> curr_best = minor_league[0].function;
+                vector<string> curr_best = population[0].function;
                 cout << "[";
                 for(int j=0; j < curr_best.size(); j++){
                     cout << "\"";

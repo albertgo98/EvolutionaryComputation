@@ -144,11 +144,10 @@ int main(int argc, const char * argv[]) {
         
         evaluations += 1;
         
-        if (evaluations % 25 == 0){
+        if (evaluations % 2 == 0){
             if (major_league.size() > 0){
                 cout << "Major League update: ";
                 cout << major_league[0].error << endl;
-                cout << "Updating population..." << endl;
                 
                 vector<string> curr_best = major_league[0].function;
                 cout << "[";
@@ -171,7 +170,6 @@ int main(int argc, const char * argv[]) {
             else if (major_league.size() == 0 && minor_league.size() > 0){
                 cout << "Minor League update: ";
                 cout << minor_league[0].error << endl;
-                cout << "Updating population..." << endl;
                 
                 vector<string> curr_best = minor_league[0].function;
                 cout << "[";
@@ -194,9 +192,8 @@ int main(int argc, const char * argv[]) {
             else{
                 cout << "Status update: ";
                 cout << population[0].error << endl;
-                cout << "Updating population..." << endl;
                 
-                vector<string> curr_best = minor_league[0].function;
+                vector<string> curr_best = population[0].function;
                 cout << "[";
                 for(int j=0; j < curr_best.size(); j++){
                     cout << "\"";
@@ -214,7 +211,7 @@ int main(int argc, const char * argv[]) {
                     break;
                 }
             }
-            
+
             update_minor = {population.begin(), population.begin()+100};
             if (minor_league.size() > 0){
                 update_major = {minor_league.begin(), minor_league.begin()+50};
@@ -232,6 +229,8 @@ int main(int argc, const char * argv[]) {
             
             population.erase(population.begin(), population.begin()+100);
             
+            cout << "Updating population..." << endl;
+            
             vector<Equation> new_set = replenish_population(coordinates, operations, terminal, 200);
             population.insert(population.end(), new_set.begin(), new_set.end());
             
@@ -239,7 +238,7 @@ int main(int argc, const char * argv[]) {
                 vector<Equation> new_set2 = replenish_population(coordinates, operations, terminal, 100);
                 minor_league.insert(minor_league.end(), new_set2.begin(), new_set2.end());
             }
-            if (major_league.size()>0){
+            if (major_league.size() > 0){
                 vector<Equation> new_set3 = replenish_population(coordinates, operations, terminal, 50);
                 major_league.insert(major_league.end(), new_set3.begin(), new_set3.end());
             }
@@ -247,8 +246,6 @@ int main(int argc, const char * argv[]) {
             sort(population.begin(), population.end(), compareByError);
             sort(minor_league.begin(), minor_league.end(), compareByError);
             sort(major_league.begin(), major_league.end(), compareByError);
-            
-            population.erase(population.begin()+200, population.end());
         }
     
         cout << evaluations << endl;
