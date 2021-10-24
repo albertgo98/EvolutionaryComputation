@@ -493,15 +493,17 @@ void breed(vector<vector<double> > &coordinates, vector<string> &operations, vec
         offspring1.function[cross1[i]] = parent2.function[cross2[i]];
     }
     
-    if (offspring1.function[4] == "T" && count(operations.begin(), operations.end(), offspring1.function[1])){
-        int rand_num3 = rand() % 3;
-        if (terminals[rand_num3] == "val"){
-            int rand_num4 = rand() % 20;
-            string s = to_string(rand_num4+1);
-            offspring1.function[3] = s;
-        }
-        else{
-            offspring1.function[3] = "x";
+    if (cross1[0] == 4){
+        if (offspring1.function[4] == "T" && count(operations.begin(), operations.end(), offspring1.function[1])){
+            int rand_num3 = rand() % 3;
+            if (terminals[rand_num3] == "val"){
+                int rand_num4 = rand() % 20;
+                string s = to_string(rand_num4+1);
+                offspring1.function[3] = s;
+            }
+            else{
+                offspring1.function[3] = "x";
+            }
         }
     }
     
